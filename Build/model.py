@@ -50,7 +50,7 @@ model = keras.Sequential([
 model.compile(loss='mean_squared_error', optimizer='adam')
 
 # Train the model
-model.fit(X_train, y_train, epochs=100, batch_size=32, validation_data=(X_test, y_test))
+model.fit(X_train, y_train, epochs=50, batch_size=32, validation_data=(X_test, y_test))
 
 
 Step 4: Evaluate the model
