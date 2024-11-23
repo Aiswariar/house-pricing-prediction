@@ -7,10 +7,10 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error
 import matplotlib.pyplot as plt
 
 
-Load the House Prices Dataset:
+#Load the House Prices Dataset:
 
 
-url = '(link unavailable)'
+url = 'https://raw.githubusercontent.com/Aiswariar/house-pricing-prediction/refs/heads/main/Build/Housing.csv'
 df = pd.read_csv(url)
 
 
