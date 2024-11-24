@@ -1,29 +1,15 @@
-name: devops- exmple-tensorflow-machinelearning
+name: devops-experiment-tensorflow-machinelearning
 on: [push]
 jobs:
   run:
-    runs-on: [ubuntu-latest]
-    container: docker://dvcorg/cml-py3:latest
+    runs-on: ubuntu-latest
+    container: docker://ubuntu:20.04
     steps:
       - uses: actions/checkout@v2
-      - name: 'Train my model'
-        env:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install dependencies and train model
         run: |
+          apt-get update && apt-get install -y python3 python3-pip
+          pip install -r requirements.txt
+          python model.py
 
-          # Your ML workflow goes here
-          pip install -r requirements.txt
-          python model.py
-          
-          echo "## Model Metrics" > report.md
-          cat metrics.txt >> report.md
-          
-          echo "\n## Model Performance" >> report.md
-          echo "Model performance metrics are on the plot below." >> report.md
-          
-          cml-publish model_results.png --md >> report.md
-          
-          cml-send-comment report.md
-          # Your ML workflow goes here
-          pip install -r requirements.txt
-          python model.py
+         
